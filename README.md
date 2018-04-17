@@ -34,13 +34,16 @@ SpringIOC容器 底层用BeanFactory、ApplicationContext 和 WebApplicationCont
 
 ### 容器启动原理
 SpringIOC容器通过Tomcat的Servlet或Lisenter监听加载
+
 SpringMVC容器通过DispatchServlet作为入口加载，Spring是SpringMVC的父容器
 
 ### 容器加载原理
 1.BeanDefinitionReader读取Resource所指向的配置文件资源，然后解析配置文件。
 配置文件中每一个<bean>解析成一个BeanDefinition对象，并保存到BeanDefinitionRegistry中
+  
 2.容器扫描BeanDefinitonRegistry中每一个BeanDefinition对象，调用InstantiationStaragy进行Bean实例化工作；
   调用BeanWrapper完成Bean属性的设置工作
+  
 3.单例缓存池：Spring在DefaultSingletonBeanRegistry类中提供一个用于缓存单实例Bean的缓存器，它是一个用HashMap实现的容器
   单实例的Bean以beanName保存在HashMap中
  
