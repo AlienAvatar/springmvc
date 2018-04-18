@@ -15,8 +15,34 @@ AOP 和 IOC
 
 AOP面向切面编程
 
-点分离技术
+JDK动态代理：不能针对类，只能为接口创建动态代理实例
+CGLib动态代理：主要对指定的类生产子类，覆盖其中的方法
 
+点分离技术
+### AOP：包括XML配置的AOP或AspectJ注解的AOP，这两种AOP表现形式不同，但底层都是用动态代理技术。
+
+#### @AspectJ AOP
+
+    <!-- 启动 @AspectJ 支持 -->
+    <bean class="org.springframework.aop.aspectj.annotation. 
+      AnnotationAwareAspectJAutoProxyCreator"/>
+
+使用 @Aspect 标注一个 Java 类，该 Java 类将会作为方面 Bean
+      
+      // 使用 @Aspect 定义一个方面类
+      @Aspect 
+      public class LogAspect 
+      { 
+          // 定义该类的其他内容
+          ... 
+      }
+
+### AOP自动代理原理
+
+Spring提供自动代理机制，使用BeanPostProcessor自动完成这项工作
+将根据一些规则自动在容器实例化Bean时，为匹配的Bean生成代理实例。
+
+为什么要用AOP？
 切分业务逻辑功能，分别处理业务
 
 Spring容器
